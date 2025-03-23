@@ -33,6 +33,10 @@ public class SecurityConfig {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/api/auth/**").permitAll()
+                .antMatchers("/api/auth/**").permitAll()
+                .antMatchers("/api/me/**").authenticated()
+                .antMatchers("/api/articles/**").authenticated()
+                .antMatchers("/api/themes/**").authenticated()
                 .anyRequest().authenticated();
 
         http.addFilterBefore(new JwtTokenFilter(jwtToken, userDetailsService),

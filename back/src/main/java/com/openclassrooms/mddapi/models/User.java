@@ -1,24 +1,10 @@
 package com.openclassrooms.mddapi.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Column;
-import javax.persistence.ManyToMany;
-import javax.persistence.JoinTable;
-import javax.persistence.JoinColumn;
-
-import lombok.Getter;
-import lombok.Setter;
-
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Getter
-@Setter
 @Table(name = "users")
 public class User {
     @Id
@@ -34,11 +20,62 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+    // Add this relationship
     @ManyToMany
     @JoinTable(
-            name = "user_subscriptions",
+            name = "user_theme_subscriptions",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "theme_id")
     )
-    private Set<Theme> subscriptions = new HashSet<>();
+    private Set<Theme> subscribedThemes = new HashSet<>();
+
+    // Existing getters and setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    // Add these methods for theme subscriptions
+    public Set<Theme> getSubscribedThemes() {
+        return subscribedThemes;
+    }
+
+    public void setSubscribedThemes(Set<Theme> subscribedThemes) {
+        this.subscribedThemes = subscribedThemes;
+    }
+
+    public void subscribeToTheme(Theme theme) {
+        subscribedThemes.add(theme);
+    }
+
+    public void unsubscribeFromTheme(Theme theme) {
+        subscribedThemes.remove(theme);
+    }
 }
