@@ -33,7 +33,7 @@ public class SecurityConfig {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/api/auth/**").permitAll()
-                .antMatchers("/api/auth/**").permitAll()
+                .antMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll() // Allow Swagger UI
                 .antMatchers("/api/me/**").authenticated()
                 .antMatchers("/api/articles/**").authenticated()
                 .antMatchers("/api/themes/**").authenticated()

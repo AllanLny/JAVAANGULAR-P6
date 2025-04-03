@@ -21,10 +21,16 @@ public class ArticleController {
         this.articleService = articleService;
     }
 
-    @GetMapping("/all")
+    @GetMapping("/feed")
     public ResponseEntity<List<ArticleDto>> getFeed(
             @RequestParam(defaultValue = "false") boolean oldestFirst) {
         return ResponseEntity.ok(articleService.getFeed(oldestFirst));
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<ArticleDto>> getAllArticles(
+            @RequestParam(defaultValue = "false") boolean oldestFirst) {
+        return ResponseEntity.ok(articleService.getAllArticles(oldestFirst));
     }
 
     @GetMapping("/{id}")

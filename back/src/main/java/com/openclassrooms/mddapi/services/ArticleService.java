@@ -48,6 +48,19 @@ public class ArticleService {
                 .collect(Collectors.toList());
     }
 
+    public List<ArticleDto> getAllArticles(boolean oldestFirst) {
+        List<Article> articles;
+        if (oldestFirst) {
+            articles = articleRepository.findAllByOrderByCreatedAtAsc();
+        } else {
+            articles = articleRepository.findAllByOrderByCreatedAtDesc();
+        }
+
+        return articles.stream()
+                .map(ArticleMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
     public ArticleDto getArticleById(Long id) {
         Article article = articleRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Article not found"));
