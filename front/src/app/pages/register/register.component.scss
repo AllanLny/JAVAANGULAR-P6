@@ -1,0 +1,146 @@
+header {
+    img {
+      width: 10%;
+      height: auto;
+    }
+  }
+  
+  .register-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+  
+    .back-arrow {
+      position: absolute;
+      top: 70px;
+      left: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: #fff;
+      cursor: pointer;
+  
+      svg {
+        width: 60px;
+        height: 60px;
+        fill: #000000;
+      }
+    }
+  
+    h2 {
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+      color: #333;
+    }
+  
+    .form-group {
+      margin-bottom: 15px;
+      text-align: left;
+  
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        font-size: 0.9rem;
+        color: #555;
+      }
+  
+      input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 1rem;
+  
+        &:focus {
+          border-color: #007bff;
+          outline: none;
+          box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+      }
+    }
+  
+    button {
+      width: 40%;
+      padding: 10px;
+      background-color: #7763C5;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+  
+      &:hover {
+        background-color: #0056b3;
+      }
+  
+      &:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+      }
+    }
+  }
+  
+  
+  @media screen and (max-width: 768px) {
+    header {
+      position: sticky;
+      img {
+        width: 50%;
+        margin-left: 25%;
+        margin-top: 20%;
+      }
+    }
+  
+    .register-container {
+      max-width: 80%;
+  
+      margin: 25px auto;
+      padding: 15px;
+  
+      h2 {
+        font-size: 1.5rem;
+      }
+  
+      .form-group {
+        label {
+          font-size: 0.8rem;
+        }
+  
+        input {
+          padding: 8px;
+          font-size: 0.9rem;
+        }
+      }
+  
+      button {
+        width: 40%; 
+        font-size: 0.9rem;
+        padding: 8px;
+      }
+  
+      .back-arrow {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background-color: #fff;
+        cursor: pointer;
+  
+        svg {
+          width: 50%;
+          height: 50%;
+          fill: #000000;
+        }
+      }
+    }
+  
+  }

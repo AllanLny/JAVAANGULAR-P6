@@ -5,3 +5,24 @@
   align-items: center;
   flex-direction: column;
 }
+.buttons-section{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+
+@media screen and (max-width: 768px) {
+  .buttons-section{
+    flex-direction: column;
+  }
+  .center{
+    height: auto;
+  }
+
+  img {
+    width: 50%;
+  }
+  
+}
