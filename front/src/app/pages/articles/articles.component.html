@@ -1,1 +1,40 @@
-<p>articles works!</p>
+<app-header></app-header>
+<div class="articles-container">
+  <div class="articles-header">
+    <button class="create-article-btn">Créer un article</button>
+    <div class="sort-dropdown">
+      <label for="sort">Trier par :</label>
+      <button class="sort-button" (click)="toggleSortOrder()">
+        <svg
+          *ngIf="sortOrder === 'date-desc'"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 320 512"
+          class="sort-icon"
+        >
+          <path
+            d="M182.6 448c-9.4 9.4-24.6 9.4-33.9 0l-128-128c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0L160 366.1V64c0-13.3 10.7-24 24-24s24 10.7 24 24V366.1l105.4-105.4c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-128 128z"
+          />
+        </svg>
+        <svg
+          *ngIf="sortOrder === 'date-asc'"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 320 512"
+          class="sort-icon"
+        >
+          <path
+            d="M182.6 64c-9.4-9.4-24.6-9.4-33.9 0l-128 128c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0L160 145.9V448c0 13.3 10.7 24 24 24s24-10.7 24-24V145.9l105.4 105.4c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-128-128z"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div class="articles-grid">
+    <div *ngFor="let article of articles" class="article-card">
+      <h2>{{ article.title }}</h2>
+      <p><strong>Date :</strong> {{ article.createdAt | date }}</p>
+      <p><strong>Auteur :</strong> {{ article.author.username }}</p>
+      <p>{{ article.content | slice: 0: 200 }}...</p>
+      <button routerLink="/articles/{{ article.id }}">Lire l'article</button>
+    </div>
+  </div>
+</div>

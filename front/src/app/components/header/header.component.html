@@ -1,0 +1,32 @@
+<header class="header">
+    <div class="logo">
+      <img src="../../../assets/logo_p6.png" alt="Site Logo" />
+    </div>
+    <button class="burger-menu" (click)="toggleMenu()">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+        <path d="M0 88C0 74.7 10.7 64 24 64H424C437.3 64 448 74.7 448 88C448 101.3 437.3 112 424 112H24C10.7 112 0 101.3 0 88zM0 248C0 234.7 10.7 224 24 224H424C437.3 224 448 234.7 448 248C448 261.3 437.3 272 424 272H24C10.7 272 0 261.3 0 248zM424 400H24C10.7 400 0 389.3 0 376C0 362.7 10.7 352 24 352H424C437.3 352 448 362.7 448 376C448 389.3 437.3 400 424 400z"/>
+      </svg>
+    </button>
+    <div class="overlay" *ngIf="menuOpen" (click)="closeMenu()"></div>
+    <nav class="nav-links" [class.open]="menuOpen">
+      <a
+        routerLink="/articles"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        Articles
+      </a>
+      <a
+        routerLink="/themes"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        Thèmes
+      </a>
+      <div class="user-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+          <path d="M399 384.2C376.9 345.8 335.4 320 288 320l-64 0c-47.4 0-88.9 25.8-111 64.2c35.2 39.2 86.2 63.8 143 63.8s107.8-24.7 143-63.8zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm256 16a72 72 0 1 0 0-144 72 72 0 1 0 0 144z"/>
+        </svg>
+      </div>
+    </nav>
+  </header>
