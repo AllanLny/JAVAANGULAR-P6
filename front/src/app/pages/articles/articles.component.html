@@ -29,12 +29,11 @@
     </div>
   </div>
   <div class="articles-grid">
-    <div *ngFor="let article of articles" class="article-card">
+    <div *ngFor="let article of articles" class="article-card" routerLink="/articles/{{ article.id }}">
       <h2>{{ article.title }}</h2>
       <p><strong>Date :</strong> {{ article.createdAt | date }}</p>
       <p><strong>Auteur :</strong> {{ article.author.username }}</p>
-      <p>{{ article.content | slice: 0: 200 }}...</p>
-      <button routerLink="/articles/{{ article.id }}">Lire l'article</button>
+      <p>Content: {{ article.content | slice: 0: 200 }}...</p>
     </div>
   </div>
 </div>
