@@ -1,6 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticleService } from '../../services/article.service';
 
+export interface Article {
+  id: number;
+  title: string;
+  content: string;
+  createdAt: string;
+  author: { username: string };
+}
+
 @Component({
   selector: 'app-articles',
   templateUrl: './articles.component.html',
@@ -30,6 +38,6 @@ export class ArticlesComponent implements OnInit {
 
   toggleSortOrder(): void {
     this.sortOrder = this.sortOrder === 'date-desc' ? 'date-asc' : 'date-desc';
-    this.loadArticles(); // Recharge les articles avec le nouvel ordre de tri
+    this.loadArticles();
   }
 }

@@ -1,0 +1,47 @@
+.themes-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+  
+    .themes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+  
+      .theme-card {
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 15px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        text-align: center;
+  
+        h2 {
+          font-size: 1.2rem;
+          margin-bottom: 10px;
+          color: #333;
+        }
+  
+        p {
+          font-size: 0.9rem;
+          margin-bottom: 15px;
+          color: #555;
+        }
+  
+        button {
+          background-color: #6200ea;
+          color: white;
+          border: none;
+          padding: 10px 15px;
+          border-radius: 5px;
+          font-size: 0.9rem;
+          cursor: pointer;
+          transition: background-color 0.3s;
+  
+          &:hover {
+            background-color: #3700b3;
+          }
+        }
+      }
+    }
+  }

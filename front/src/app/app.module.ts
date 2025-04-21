@@ -14,10 +14,14 @@ import { ArticlesComponent } from './pages/articles/articles.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './services/auth.interceptor';
+import { CreateArticleComponent } from './pages/create-article/create-article.component';
+import { ThemesComponent } from './pages/themes/themes.component';
+import { ArticleDetailComponent } from './pages/article-detail/article-detail.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, LoginComponent, RegisterComponent, ArticlesComponent, HeaderComponent],
+  declarations: [AppComponent, HomeComponent, LoginComponent, RegisterComponent, ArticlesComponent, HeaderComponent, CreateArticleComponent, ThemesComponent, ArticleDetailComponent, ProfileComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
