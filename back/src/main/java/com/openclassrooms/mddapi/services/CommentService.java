@@ -34,16 +34,18 @@ public class CommentService {
 
     public CommentDto addComment(Long articleId, CommentCreateDto createDto) {
         User currentUser = authService.getCurrentUser();
+    
         Article article = articleRepository.findById(articleId)
                 .orElseThrow(() -> new ResourceNotFoundException("Article not found"));
-
+    
         Comment comment = new Comment();
         comment.setContent(createDto.getContent());
         comment.setCreatedAt(LocalDateTime.now());
-        comment.setAuthor(currentUser);
+        comment.setAuthor(currentUser); 
         comment.setArticle(article);
-
+    
         Comment savedComment = commentRepository.save(comment);
+    
         return CommentMapper.toDto(savedComment);
     }
 }

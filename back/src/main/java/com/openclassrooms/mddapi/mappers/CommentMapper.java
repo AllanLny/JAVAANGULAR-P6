@@ -16,8 +16,8 @@ public class CommentMapper {
         dto.setContent(comment.getContent());
         dto.setCreatedAt(comment.getCreatedAt());
         dto.setAuthor(UserMapper.toDto(comment.getAuthor()));
-        dto.setArticleId(comment.getArticle().getId());
-
+        dto.setArticleId(comment.getArticle() != null ? comment.getArticle().getId() : null);
+        dto.setUsername(comment.getAuthor() != null ? comment.getAuthor().getUsername() : null); 
         return dto;
     }
 }

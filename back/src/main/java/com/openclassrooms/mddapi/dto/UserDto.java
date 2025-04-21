@@ -14,6 +14,8 @@ public class UserDto {
 
     private Set<ThemeDto> subscribedThemes;
 
+    private String token; 
+
     // Getters and Setters
     public Long getId() {
         return id;
@@ -46,11 +48,20 @@ public class UserDto {
     public void setPassword(String password) {
         this.password = password;
     }
+
     public Set<ThemeDto> getSubscribedThemes() {
         return subscribedThemes;
     }
 
     public void setSubscribedThemes(Set<ThemeDto> subscribedThemes) {
         this.subscribedThemes = subscribedThemes;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

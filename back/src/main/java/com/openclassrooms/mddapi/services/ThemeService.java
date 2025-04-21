@@ -7,6 +7,8 @@ import com.openclassrooms.mddapi.mappers.ThemeMapper;
 import com.openclassrooms.mddapi.models.Theme;
 import com.openclassrooms.mddapi.models.User;
 import com.openclassrooms.mddapi.repositories.ThemeRepository;
+import com.openclassrooms.mddapi.repositories.UserRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,12 +21,16 @@ import java.util.stream.Collectors;
 public class ThemeService {
     private final ThemeRepository themeRepository;
     private final AuthService authService;
+    private final UserRepository userRepository;
+    
 
     @Autowired
-    public ThemeService(ThemeRepository themeRepository, AuthService authService) {
+    public ThemeService(ThemeRepository themeRepository, AuthService authService, UserRepository userRepository) {
         this.themeRepository = themeRepository;
         this.authService = authService;
+        this.userRepository = userRepository;
     }
+
 
     public List<ThemeDto> getAllThemes() {
         User currentUser = authService.getCurrentUser();
@@ -65,9 +71,10 @@ public class ThemeService {
         User currentUser = authService.getCurrentUser();
         Theme theme = themeRepository.findById(themeId)
                 .orElseThrow(() -> new ResourceNotFoundException("Theme not found"));
-
+    
         currentUser.unsubscribeFromTheme(theme);
-
+        userRepository.save(currentUser);
+    
         ThemeDto dto = ThemeMapper.toDto(theme);
         dto.setSubscribed(false);
         return dto;

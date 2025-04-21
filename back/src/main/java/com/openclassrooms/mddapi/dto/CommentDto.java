@@ -8,6 +8,7 @@ public class CommentDto {
     private LocalDateTime createdAt;
     private UserDto author;
     private Long articleId;
+    private String username; // Nouveau champ pour le nom d'utilisateur
 
     // Getters and setters
     public Long getId() {
@@ -48,5 +49,13 @@ public class CommentDto {
 
     public void setArticleId(Long articleId) {
         this.articleId = articleId;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

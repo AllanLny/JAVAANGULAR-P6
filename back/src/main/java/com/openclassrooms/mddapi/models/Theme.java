@@ -24,4 +24,5 @@ public class Theme {
 
     @ManyToMany(mappedBy = "subscribedThemes")
     private Set<User> subscribers = new HashSet<>();
+    
 }

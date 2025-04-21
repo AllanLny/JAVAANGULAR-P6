@@ -12,42 +12,29 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Component
 public class UserMapper {
-
-    /**
-     * Converts a User entity to a UserDto
-     * @param user the user entity to convert
-     * @return the corresponding UserDto
-     */
-        public static UserDto toDto(User user) {
-            if (user == null) {
-                return null;
-            }
-
-            UserDto dto = new UserDto();
-            dto.setId(user.getId());
-            dto.setEmail(user.getEmail());
-            dto.setUsername(user.getUsername());
-
-            // Map subscribed themes
-            if (user.getSubscribedThemes() != null) {
-                Set<ThemeDto> themeDtos = user.getSubscribedThemes().stream()
-                        .map(theme -> {
-                            ThemeDto themeDto = ThemeMapper.toDto(theme);
-                            themeDto.setSubscribed(true);
-                            return themeDto;
-                        })
-                        .collect(Collectors.toSet());
-                dto.setSubscribedThemes(themeDtos);
-            }
-
-            return dto;
+    public static UserDto toDto(User user) {
+        if (user == null) {
+            return null;
         }
 
-    /**
-     * Converts a UserDto to a User entity
-     * @param dto the UserDto to convert
-     * @return the corresponding User entity
-     */
+        UserDto dto = new UserDto();
+        dto.setId(user.getId());
+        dto.setEmail(user.getEmail());
+        dto.setUsername(user.getUsername());
+
+        if (user.getSubscribedThemes() != null) {
+            Set<ThemeDto> themeDtos = user.getSubscribedThemes().stream()
+                    .map(theme -> {
+                        ThemeDto themeDto = ThemeMapper.toDto(theme);
+                        themeDto.setSubscribed(true);
+                        return themeDto;
+                    })
+                    .collect(Collectors.toSet());
+            dto.setSubscribedThemes(themeDtos);
+        }
+
+        return dto;
+    }
     public static User toEntity(UserDto dto) {
         if (dto == null) {
             return null;
@@ -60,12 +47,6 @@ public class UserMapper {
         return user;
     }
 
-    /**
-     * Updates an existing User entity with data from a UserDto
-     * @param user the existing User entity
-     * @param dto the UserDto with new data
-     * @return the updated User entity
-     */
     public static User updateFromDto(User user, UserDto dto, PasswordEncoder passwordEncoder) {
         if (user == null || dto == null) {
             return user;
