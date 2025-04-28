@@ -4,7 +4,9 @@
     <div *ngFor="let theme of themes" class="theme-card">
       <h2>{{ theme.name }}</h2>
       <p>{{ theme.description }}</p> 
-      <button (click)="subscribeToTheme(theme.id)">S'abonner</button>
+      <button (click)="subscribeToTheme(theme.id)" [disabled]="theme.subscribed">
+        {{ theme.subscribed ? 'Abonné' : "S'abonner" }}
+      </button>
     </div>
   </div>
 </div>

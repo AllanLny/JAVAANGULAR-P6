@@ -37,6 +37,10 @@
           font-size: 0.9rem;
           cursor: pointer;
           transition: background-color 0.3s;
+
+          &:disabled{
+            cursor: not-allowed;
+          }
   
           &:hover {
             background-color: #3700b3;

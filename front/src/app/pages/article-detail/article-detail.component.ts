@@ -11,7 +11,7 @@ export interface Article {
   createdAt: string;
   author: { username: string };
   theme?: { name: string };
-  comments: { username: string; content: string }[];
+  comments: { username: string; content: string }[]; // Ajout de `comments`
 }
 
 @Component({
@@ -20,7 +20,7 @@ export interface Article {
   styleUrls: ['./article-detail.component.scss']
 })
 export class ArticleDetailComponent implements OnInit {
-  article: any;
+  article: Article | null = null;
   commentForm!: FormGroup;
 
   constructor(
@@ -57,7 +57,9 @@ export class ArticleDetailComponent implements OnInit {
       if (articleId) {
         this.articleService.addComment(articleId, this.commentForm.value).subscribe({
           next: (comment) => {
-            this.article.comments.push(comment);
+            if (this.article) {
+              this.article.comments.push(comment);
+            }
             this.commentForm.reset();
           },
           error: (err) => {

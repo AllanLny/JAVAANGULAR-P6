@@ -10,7 +10,7 @@
   <h1>{{ article?.title }}</h1>
   <section class="article-details">
     <p><strong>Date :</strong> {{ article?.createdAt | date }}</p>
-    <p><strong>Auteur :</strong> {{ article?.author.username }}</p>
+    <p><strong>Auteur :</strong> {{ article?.author?.username }}</p>
     <p><strong>Thème :</strong> {{ article?.theme?.name }}</p>
   </section>
   <p>{{ article?.content }}</p>

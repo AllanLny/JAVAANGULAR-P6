@@ -8,6 +8,8 @@ export interface Article {
   content: string;
   createdAt: string;
   author: { username: string };
+  theme?: { name: string };
+  comments: { username: string; content: string }[]; 
 }
 
 export interface Comment {

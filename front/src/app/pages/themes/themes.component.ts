@@ -30,8 +30,12 @@ export class ThemesComponent implements OnInit {
     this.themeService.subscribeToTheme(themeId).subscribe({
       next: () => {
         console.log(`Subscribed to theme with ID: ${themeId}`);
+        const theme = this.themes.find((t) => t.id === themeId);
+        if (theme) {
+          theme.subscribed = true;
+        }
       },
-      error: (err) => {
+      error: (err: unknown) => {
         console.error('Error subscribing to theme:', err);
       },
     });

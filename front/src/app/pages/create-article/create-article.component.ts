@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { ArticleService } from '../../services/article.service';
+import { Theme } from '../../services/theme.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,10 +9,12 @@ import { Router } from '@angular/router';
   templateUrl: './create-article.component.html',
   styleUrls: ['./create-article.component.scss']
 })
+
 export class CreateArticleComponent implements OnInit {
   createArticleForm!: FormGroup;
-  themes: { id: number; name: string }[] = []; 
-
+  themes: Theme[] = []; 
+  
+  
   constructor(
     private fb: FormBuilder,
     private articleService: ArticleService,
@@ -37,10 +40,13 @@ export class CreateArticleComponent implements OnInit {
 
   loadThemes(): void {
     this.articleService.getThemes().subscribe({
-      next: (data) => {
-        this.themes = data;
+      next: (data: { id: number; name: string }[]) => {
+        this.themes = data.map(theme => ({
+          ...theme,
+          description: '',
+        }));
       },
-      error: (err) => {
+      error: (err: unknown) => {
         console.error('Error loading themes:', err);
       },
     });
@@ -53,7 +59,7 @@ export class CreateArticleComponent implements OnInit {
           console.log('Article created successfully');
           this.router.navigate(['/articles']);
         },
-        error: (err) => {
+        error: (err: unknown) => {
           console.error('Error creating article:', err);
         },
       });

@@ -1,13 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ArticleService } from '../../services/article.service';
-
-export interface Article {
-  id: number;
-  title: string;
-  content: string;
-  createdAt: string;
-  author: { username: string };
-}
+import { ArticleService, Article } from '../../services/article.service';
 
 @Component({
   selector: 'app-articles',
@@ -15,7 +7,7 @@ export interface Article {
   styleUrls: ['./articles.component.scss']
 })
 export class ArticlesComponent implements OnInit {
-  articles: any[] = [];
+  articles: Article[] = [];
   sortOrder: 'date-desc' | 'date-asc' = 'date-desc';
 
   constructor(private articleService: ArticleService) {}
@@ -27,10 +19,10 @@ export class ArticlesComponent implements OnInit {
   loadArticles(): void {
     const oldestFirst = this.sortOrder === 'date-asc';
     this.articleService.getArticles(oldestFirst).subscribe({
-      next: (data) => {
+      next: (data: Article[]) => {
         this.articles = data;
       },
-      error: (err) => {
+      error: (err: unknown) => {
         console.error('Error loading articles:', err);
       }
     });

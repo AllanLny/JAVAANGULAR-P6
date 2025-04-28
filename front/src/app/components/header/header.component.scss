@@ -1,124 +1,141 @@
 .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  border-bottom: #333 1px solid;
+
+  .logo img {
+    width: 90px;
+    height: auto;
+  }
+
+  .burger-menu {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    svg {
+      width: 30px;
+      height: 30px;
+      fill: #333;
+    }
+  }
+
+  .nav-links {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    border-bottom: #333 1px solid;
-  
-    .logo img {
-      width: 90px;
-      height: auto;
+    gap: 20px;
+
+    a {
+      text-decoration: none;
+      font-size: 1rem;
+      color: #333;
+      transition: color 0.3s;
+
+      &:hover {
+        color: #6200ea;
+      }
+
+      &.active {
+        color: #6200ea;
+        font-weight: bold;
+      }
     }
-  
-    .burger-menu {
-      display: none;
-      background: none;
+
+    .logout-btn {
+      width: 100%;
+      padding: 10px 20px;
+      background-color: transparent;
+      color: #e53935;
       border: none;
+      font-size: 1rem;
+      text-align: left;
       cursor: pointer;
-  
+      transition: color 0.3s;
+
+      &:hover {
+        color: #b71c1c;
+      }
+    }
+
+    .user-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
       svg {
         width: 30px;
         height: 30px;
-        fill: #333;
-      }
-    }
-  
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-  
-      a {
-        text-decoration: none;
-        font-size: 1rem;
-        color: #333;
-        transition: color 0.3s;
-  
-        &:hover {
-          color: #6200ea;
-        }
-  
-        &.active {
-          color: #6200ea;
-          font-weight: bold;
-        }
-      }
-      .logout-btn {
-        width: 100%;
-        padding: 10px 20px;
-        background-color: transparent;
-        color: #e53935;
-        border: none;
-        font-size: 1rem;
-        text-align: left;
-        cursor: pointer;
-        transition: color 0.3s;
-      }    
-  
-      .user-icon svg {
-        width: 30px;
-        height: 30px;
         fill: #868686;
+        transition: fill 0.3s;
       }
-    }
-  
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(136, 136, 136, 0.5);
-      z-index: 999;
-    }
-  
-    @media screen and (max-width: 768px) {
-      .burger-menu {
-        display: block;
-      }
-  
-      .nav-links {
-        position: fixed;
-        top: 0;
-        right: 0;
-        background-color: white;
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 20px;
-        gap: 10px;
-        height: 100vh;
-        width: 70%;
-        transform: translateX(100%);
-        transition: transform 0.3s ease-in-out;
-        z-index: 1000;
-  
-        &.open {
-          transform: translateX(0);
-        }
-  
-        a {
-          width: 100%;
-          padding: 10px 20px;
-        }
-        .user-icon {
-          position: absolute; 
-          bottom: 35px;
-          left: 10%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-      
-          svg {
-            width: 40px;
-            height: 40px;
-            fill: #868686;
-          }
-      
-          &:hover svg {
-            fill: #6200ea;
-          }
-        }
 
+      &:hover svg {
+        fill: #6200ea;
       }
     }
   }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(136, 136, 136, 0.5);
+    z-index: 999;
+  }
+
+  @media screen and (max-width: 768px) {
+    .burger-menu {
+      display: block;
+    }
+
+    .nav-links {
+      position: fixed;
+      top: 0;
+      right: 0;
+      background-color: white;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 20px;
+      gap: 10px;
+      height: 100vh;
+      width: 70%;
+      transform: translateX(100%);
+      transition: transform 0.3s ease-in-out;
+      z-index: 1000;
+
+      &.open {
+        transform: translateX(0);
+      }
+
+      a {
+        width: 100%;
+        padding: 10px 20px;
+      }
+
+      .user-icon {
+        position: absolute;
+        bottom: 40px;
+        right: 90px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        svg {
+          width: 40px;
+          height: 40px;
+          fill: #868686;
+        }
+
+        &:hover svg {
+          fill: #6200ea;
+        }
+      }
+    }
+  }
+}
+
