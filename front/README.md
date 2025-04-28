@@ -23,7 +23,8 @@ Avant de commencer, assurez-vous d'avoir les outils suivants installés sur votr
 
 2. Installez les dépendances :
 
-    ```npm install
+    ```
+    npm install
      ```
 
 3. Configurez le proxy pour les appels API :
