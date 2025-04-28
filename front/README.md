@@ -34,7 +34,8 @@ Le fichier proxy.conf.json est déjà configuré pour rediriger les appels vers 
 
 Pour démarrer le projet en mode développement, exécutez la commande suivante :
 
-``` ng serve 
+``` 
+ng serve 
 ```
 
 L'application sera accessible à l'adresse suivante : http://localhost:4200.
