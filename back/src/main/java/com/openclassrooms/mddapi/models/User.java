@@ -20,7 +20,6 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    // Add this relationship
     @ManyToMany
     @JoinTable(
             name = "user_theme_subscriptions",
@@ -62,7 +61,6 @@ public class User {
         this.password = password;
     }
 
-    // Add these methods for theme subscriptions
     public Set<Theme> getSubscribedThemes() {
         return subscribedThemes;
     }
